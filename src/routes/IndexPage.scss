@@ -1,0 +1,19 @@
+.layout{
+    .header{
+        height: 48px;
+        background: #ffffff;
+    }
+    .content{
+        background-color: #ffffff;
+        padding: 40px 0 0 0;
+    }
+}
+
+:global{
+    .footer-wrap{
+        height: 48px;
+        padding: 0;
+        line-height: 48px;
+        text-align: center;
+    }
+}

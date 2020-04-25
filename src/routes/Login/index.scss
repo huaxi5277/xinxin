@@ -1,0 +1,17 @@
+
+:global {
+    .account{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        img{
+            display: block;
+            width: 300px;
+            min-height: 100%;
+            margin: 0 auto;
+        }
+        .account-form{
+            height: 100vh;
+          }
+    }
+}

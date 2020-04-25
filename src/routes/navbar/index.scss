@@ -1,0 +1,13 @@
+:global {
+    .top-nav{
+        position: relative;
+        .go-design{
+            position: absolute;
+            right: 100px; 
+        }
+        .go-login{
+            position: absolute;
+            right: 0;
+        }
+    }
+  }
