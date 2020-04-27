@@ -6,6 +6,7 @@ import { Input } from 'antd';
 import bg1 from '../../assets/img_bg_1.jpg'
 import bg2 from '../../assets/img_bg_2.jpg'
 import bg3 from '../../assets/img_bg_3.jpg'
+import axios from 'axios'
 const { Search } = Input;
 const arr = [
     {
@@ -28,6 +29,18 @@ export default class index extends Component {
         }
     }
     componentDidMount() {
+
+
+      axios.get('http://192.168.0.112:8080/comcolinBus_war_exploded/user/selectAllUser.do')
+      .then((res)=>{
+          console.log(res)
+      })
+
+
+
+
+
+
         let secondElement = document.getElementsByClassName("main-module-second")[0];
         let fourElement = document.getElementsByClassName("main-module-four")[0];
         let fiveElement = document.getElementsByClassName("main-module-five")[0];
@@ -56,7 +69,6 @@ export default class index extends Component {
         window.onscroll = function () {
 
             let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-            console.log(scrollTop)
             if (client_width_view > 986) {
                 if (scrollTop > 300) {
 
