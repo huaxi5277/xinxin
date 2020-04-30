@@ -42,6 +42,9 @@ import style from './index.scss'
       };
       menu = (
         <Menu onClick={(key)=>this.handleClickMenu(key)}>
+          <Menu.Item key="user_msg">
+            <span><Link to="/user_msg/change_avatar">个人信息</Link></span>
+          </Menu.Item>
           <Menu.Item key="logout">
             <span>退出</span>
           </Menu.Item>
@@ -62,13 +65,6 @@ import style from './index.scss'
           this.props.history.push('/home')
         }
       }
-
-
-
-
-
-
-
     render() {
         return (
             <div>
@@ -100,7 +96,9 @@ import style from './index.scss'
                           localStorage.email ?
                            <Dropdown overlay={this.menu} className="go-login">
                           <a className="ant-dropdown-link">
-                            <span className={style.email}>huaxi</span>{' '}
+                            <span className={style.email}>
+                              <img src="https://avatar.bbs.miui.com/images/noavatar_small.gif" alt=""/>
+                              </span>{' '}
                             <Icon className={style.icon} type="down" />
                           </a>
                         </Dropdown> 

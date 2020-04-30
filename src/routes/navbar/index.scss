@@ -1,13 +1,22 @@
 :global {
     .top-nav{
         position: relative;
+        .ant-menu-item{
+            margin-right: 20px;
+        }
+        .go-find{
+            margin-right: 20px;
+        }
         .go-design{
             position: absolute;
-            right: 100px; 
+            right: 60px; 
         }
         .go-login{
             position: absolute;
             right: 0;
+            img{
+                border-radius: 50%;
+            }
         }
     }
   }

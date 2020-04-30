@@ -48,15 +48,7 @@ class index extends Component {
           }
           else {
             localStorage.setItem("email", res.data.data.access);
-            if (1 == res.data.data.access) {
-
-            }
-            else if (2 == res.data.data.access) {
-
-            }
-            else if (3 == res.data.data.access) {
-
-            }
+              this.props.history.push('/user_msg')
           }
 
         })

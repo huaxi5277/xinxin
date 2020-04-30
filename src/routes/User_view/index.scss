@@ -1,0 +1,17 @@
+:global {
+    .swim-skill{
+        height: 100%;
+        min-height: 900px;
+        display: flex;
+        padding: 0 40px;
+        margin-top: 10px;
+        .submenu-wrap{
+            width:220px;
+        }
+        .show-wrap{
+            width: calc(100% - 220px);
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+    }
+}

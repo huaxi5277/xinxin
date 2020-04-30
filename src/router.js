@@ -37,19 +37,29 @@ let routeArr = [
         path : "/user_msg",
         component : ()=>import('./routes/User_view'),
         model : [],
-        isAuthority
-      },
-      {
-        path : "/work_msg",
-        component : ()=>import('./routes/Work_view'),
-        model : [],
-        isAuthority
-      },
-      {
-        path : "/ad_msg",
-        component : ()=>import('./routes/Ad_view'),
-        model : [],
-        isAuthority
+        isAuthority,
+        routes : [
+          {
+            path : "/user_msg/change_password",
+            component : ()=>import('./routes/change_passpork'),
+            model : [],
+          },
+          {
+            path : "/user_msg/change_avatar",
+            component : ()=>import('./routes/change_avatar'),
+            model : [],
+          },
+          {
+            path : "/user_msg/celebrity",
+            component : ()=>import('./routes/celebrity'),
+            model : [],
+          },
+          {
+            path : "/user_msg/detail",
+            component : ()=>import('./routes/detail'),
+            model : [],
+          }
+        ]
       }
     ]
   }
