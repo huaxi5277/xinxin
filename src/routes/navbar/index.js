@@ -47,6 +47,28 @@ import style from './index.scss'
           </Menu.Item>
         </Menu>
       );
+      go_find(){
+        if(this.props.history.location.pathname == '/home'){
+          // 继续判断 窗口大小
+          if(document.body.clientWidth > 968){
+            document.documentElement.scrollTop = document.body.scrollTop = 1700
+          }
+          else {
+            document.documentElement.scrollTop = document.body.scrollTop = 2500
+          }
+          
+        }
+        else {
+          this.props.history.push('/home')
+        }
+      }
+
+
+
+
+
+
+
     render() {
         return (
             <div>
@@ -59,14 +81,12 @@ import style from './index.scss'
                       <Menu.Item key="home">
                           <Link to="/"
                           style={{fontWeight:'600',color:"#2c3e50", fontSize:"28px"}}
-                          >Swimming</Link>
+                          >Recover</Link>
                       </Menu.Item>
-                      <Menu.Item key="find" className="go-find">
-                          <Link to="/find">
-                              查询
-                          </Link>
+                      <Menu.Item key="find" className="go-find" onClick={()=>{this.go_find()}}>
+                          查询
                       </Menu.Item>
-                      <Menu.Item key="recover" className="go-recover">
+                      <Menu.Item key="recover" className="go-recover"  >
                           <Link to="/recover">
                               回收
                           </Link>

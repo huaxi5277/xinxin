@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Form, Input, Button, Message, Checkbox } from 'antd';
-import { pwd_reg, user_all_people_login } from '../../utils/Regexp.js';
-import { Link } from 'dva/router'
+import { Form, Input, Button, Message, Checkbox, Radio } from 'antd';
+import { pwd_reg, user_general_register, user_work_people_register } from '../../utils/Regexp.js';
 import { connect } from 'dva';
 import Tree_5 from '../../assets/tree_5.jpg'
-import style from './index.scss'
+import style from '../Login/index'
 import axios from 'axios'
 @connect()
 
@@ -35,31 +34,30 @@ class index extends Component {
   };
   render() {
     const onFinish = values => {
-      axios.get(user_all_people_login, {
-        params: {
-          name: values.name,
-          password: values.password
-        }
-      })
-        .then((res) => {
-          console.log(res.data.data)
-          if (3 == res.data.data.status) {
-            Message.error("登录失败,您被系统认为为非法用户，请联系管理员")
-          }
-          else {
-            localStorage.setItem("email", res.data.data.access);
-            if (1 == res.data.data.access) {
-
+      if (this.state.value == 1) {
+        axios.get(user_general_register, { params: { name: values.name, password: values.password } })
+          .then((res) => {
+            if (res.data.code == 200 ) {
+              this.props.history.push('/login')
             }
-            else if (2 == res.data.data.access) {
-
+            if(res.data.code == 500 ){
+              Message.error(res.data.msg)
             }
-            else if (3 == res.data.data.access) {
+          })
+      }
 
+      if (this.state.value == 2) {
+        axios.get(user_work_people_register, { params: { name: values.name, password: values.password } })
+          .then((res) => {
+            console.log(this.props.history)
+            if (res.data.code == 200) {
+              this.props.history.push('/login')
             }
-          }
-
-        })
+            if(res.data.code == 500 ){
+              Message.error(res.data.msg)
+            }
+          })
+      }
     };
     const onFinishFailed = errorInfo => {
       console.log('Failed:', errorInfo);
@@ -76,7 +74,7 @@ class index extends Component {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
           >
-            <div className="title_header">xxx登录</div>
+            <div className="title_header">xxx注册</div>
             <Form.Item
               label="Username"
               name="name"
@@ -107,9 +105,12 @@ class index extends Component {
             >
               <Input.Password />
             </Form.Item>
-            <Form.Item name="remember" valuePropName="checked">
-              <Checkbox>Remember me</Checkbox>
-              <div className="go_register"><Link to="/register">无账号立即注册</Link></div>
+            <Form.Item name="passport" valuePropName="checked">
+              <Radio.Group onChange={this.onChange} value={this.state.value}>
+                <Radio value={1}>普通用户</Radio>
+                <Radio value={2}>回收人员</Radio>
+              </Radio.Group>
+
             </Form.Item>
 
             <Form.Item name="submit">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 import Private from './utils/Private'
-const isAuthority = false
+const isAuthority = true
 let routeArr = [
   {
     path : "/",
@@ -11,12 +11,16 @@ let routeArr = [
       {
         path : "/home",
         component : ()=>import('./routes/main_view'),
-        model : [],
-        isAuthority
+        model : []
       },
       {
         path : "/login",
         component : ()=>import('./routes/Login'),
+        model : []
+      },
+      {
+        path : "/register",
+        component : ()=>import('./routes/Register'),
         model : []
       },
       {
@@ -25,14 +29,27 @@ let routeArr = [
         model : []
       },
       {
-        path : "/find",
-        component : ()=>import('./routes/find_msg'),
-        model : []
-      },
-      {
         path : "/recover",
         component : ()=>import('./routes/recover'),
         model : []
+      },
+      {
+        path : "/user_msg",
+        component : ()=>import('./routes/User_view'),
+        model : [],
+        isAuthority
+      },
+      {
+        path : "/work_msg",
+        component : ()=>import('./routes/Work_view'),
+        model : [],
+        isAuthority
+      },
+      {
+        path : "/ad_msg",
+        component : ()=>import('./routes/Ad_view'),
+        model : [],
+        isAuthority
       }
     ]
   }

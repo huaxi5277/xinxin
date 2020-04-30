@@ -6,12 +6,40 @@
         justify-content: center;
         img{
             display: block;
-            width: 300px;
+            width: 200px;
             min-height: 100%;
             margin: 0 auto;
+            margin-bottom: 30px;
         }
-        .account-form{
-            height: 100vh;
-          }
+        .form_view{
+            width: 600px;
+            height: 470px;
+            box-shadow:  10px 20px 50px 0px rgba(0, 0, 0, 0.06);
+            margin: 0 auto;
+            opacity: 0;
+            transition: all 0.5s linear;
+            &.active{
+                opacity: 1; 
+            }
+            .title_header{
+                text-align: center;
+                padding-top: 30px;
+                font-size: 18px;
+                color:#22915e;
+            }
+            .ant-row{
+            width: 500px;
+            margin: 0 auto;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+        .ant-form-item-control-input{
+            width: 500px;
+        }
+        .go_register{
+            float: right;
+        }
+        }
+        
     }
 }

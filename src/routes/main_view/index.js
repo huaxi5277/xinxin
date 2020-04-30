@@ -6,6 +6,7 @@ import { Input } from 'antd';
 import bg1 from '../../assets/img_bg_1.jpg'
 import bg2 from '../../assets/img_bg_2.jpg'
 import bg3 from '../../assets/img_bg_3.jpg'
+import Tree_5 from '../../assets/tree_5.jpg'
 import axios from 'axios'
 const { Search } = Input;
 const arr = [
@@ -19,8 +20,6 @@ const arr = [
         img: bg3
     }
 ]
-
-
 export default class index extends Component {
     constructor() {
         super();
@@ -29,22 +28,7 @@ export default class index extends Component {
         }
     }
     componentDidMount() {
-
-
-      axios.get('http://192.168.0.112:8080/comcolinBus_war_exploded/user/selectAllUser.do')
-      .then((res)=>{
-          console.log(res)
-      })
-
-
-
-
-
-
         let secondElement = document.getElementsByClassName("main-module-second")[0];
-        let fourElement = document.getElementsByClassName("main-module-four")[0];
-        let fiveElement = document.getElementsByClassName("main-module-five")[0];
-        let sixElement = document.getElementsByClassName("main-module-six")[0];
         let main_module_third_title_box = document.getElementsByClassName("main-module-third-title-box")[0];
         let secondElementPosition = document.getElementsByClassName("main-module-second-position")[0];
         let main_module_third_show_left = document.getElementsByClassName("main-module-third-show-left")[0];
@@ -278,7 +262,7 @@ export default class index extends Component {
                     <div className="main-module-five_one item ">
                         <section>
                             <div className="img-box">
-                                <img src="http://img4.imgtn.bdimg.com/it/u=3207362356,2319391156&fm=26&gp=0.jpg" alt="" />
+                                <img src={Tree_5} alt="" />
                             </div>
                             <div className="item-content">
                                 <h3>Marketing</h3>
@@ -289,7 +273,7 @@ export default class index extends Component {
                     <div className=" main-module-five_two item">
                         <section>
                             <div className="img-box">
-                                <img src="http://img4.imgtn.bdimg.com/it/u=3207362356,2319391156&fm=26&gp=0.jpg" alt="" />
+                                <img src={Tree_5} alt="" />
                             </div>
                             <div className="item-content">
                                 <h3>Marketing</h3>
@@ -300,7 +284,7 @@ export default class index extends Component {
                     <div className="main-module-five_three item">
                         <section>
                             <div className="img-box">
-                                <img src="http://img4.imgtn.bdimg.com/it/u=3207362356,2319391156&fm=26&gp=0.jpg" alt="" />
+                                <img src={Tree_5} alt="" />
                             </div>
                             <div className="item-content">
                                 <h3>Marketing</h3>
@@ -311,7 +295,7 @@ export default class index extends Component {
                     <div className="main-module-five_four item">
                         <section>
                             <div className="img-box">
-                                <img src="http://img4.imgtn.bdimg.com/it/u=3207362356,2319391156&fm=26&gp=0.jpg" alt="" />
+                                <img src={Tree_5} alt="" />
                             </div>
                             <div className="item-content">
                                 <h3>Marketing</h3>
@@ -328,7 +312,7 @@ export default class index extends Component {
                     <div className="main-module-six-container">
                     <div className="main-module-six-item one">
                         <div className="img-box">
-                            <img src="http://img4.imgtn.bdimg.com/it/u=3207362356,2319391156&fm=26&gp=0.jpg" alt="" />
+                            <img src={Tree_5} alt="" />
                         </div>
                         <div className="content-box">
                             <h3>Photoshoot On The Street</h3>
@@ -341,7 +325,7 @@ export default class index extends Component {
                     </div>
                     <div className="main-module-six-item two">
                         <div className="img-box">
-                            <img src="http://img4.imgtn.bdimg.com/it/u=3207362356,2319391156&fm=26&gp=0.jpg" alt="" />
+                            <img src={Tree_5} alt="" />
                         </div>
                         <div className="content-box">
                             <h3>Photoshoot On The Street</h3>
@@ -354,7 +338,7 @@ export default class index extends Component {
                     </div>
                     <div className="main-module-six-item three">
                         <div className="img-box">
-                            <img src="http://img4.imgtn.bdimg.com/it/u=3207362356,2319391156&fm=26&gp=0.jpg" alt="" />
+                            <img src={Tree_5} alt="" />
                         </div>
                         <div className="content-box">
                             <h3>Photoshoot On The Street</h3>
@@ -367,7 +351,7 @@ export default class index extends Component {
                     </div>
                     <div className="main-module-six-item four">
                         <div className="img-box">
-                            <img src="http://img4.imgtn.bdimg.com/it/u=3207362356,2319391156&fm=26&gp=0.jpg" alt="" />
+                            <img src={Tree_5} alt="" />
                         </div>
                         <div className="content-box">
                             <h3>Photoshoot On The Street</h3>
