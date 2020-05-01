@@ -9,10 +9,16 @@ class index extends Component {
         super()
         this.state = {
             SelectedKeys : [],
+            id : 0
         }
     }
     componentDidMount(){
     const arr =   this.props.location.pathname.split('/')
+    const id = localStorage.getItem("email")
+    this.setState({
+        id : id  
+    })
+    console.log(id)
     this.handleClick(arr[2])
     
     }
@@ -23,7 +29,6 @@ class index extends Component {
     }
     render() {
         const {routes} = this.props
-         console.log(routes)
         return (
             <div className="swim-skill">
                 <Menu
@@ -49,30 +54,34 @@ class index extends Component {
                     <SubMenu
                     key="sub2"
                     className="submenu-wrap"
+                    style = {{display : this.state.id == 1 ?  "block" : "none"}}
                     title={
                         <span>
                             <span>订单管理</span>
                         </span>
                     }
                     >
-                        <Menu.ItemGroup key="g2">
+                        <Menu.ItemGroup key="g2" >
+                              <Menu.Item key="user_recover"><Link to="/user_msg/user_recover">用户回收</Link></Menu.Item>
                               <Menu.Item key="detail"><Link to="/user_msg/detail">订单信息</Link></Menu.Item>
                         </Menu.ItemGroup>
                     </SubMenu>
-                    {/* <SubMenu
+                    <SubMenu
                     key="sub3"
                     className="submenu-wrap"
+                    style={{display :"block"}}
+                    style = {{display : this.state.id == 2 ?  "block" : "none"}}
                     title={
                         <span>
-                            <span>泳前/泳后护理</span>
+                            <span>管理员</span>
                         </span>
                     }
                     >
                         <Menu.ItemGroup key="g3">
-                        <Menu.Item key="before"><Link to="/study/before">泳前</Link></Menu.Item>
-                        <Menu.Item key="after"><Link to="/study/after">泳后</Link></Menu.Item>
+                        <Menu.Item key="find_user_profile"><Link to="/user_msg/find_user_profile">用户身份</Link></Menu.Item>
+                        <Menu.Item key="find_user_power"><Link to="/user_msg/find_user_power">用户权限</Link></Menu.Item>
                         </Menu.ItemGroup>
-                    </SubMenu> */}
+                    </SubMenu>
                 </Menu>
                 <div className="show-wrap">
                     <Switch>

@@ -42,12 +42,16 @@ class index extends Component {
         }
       })
         .then((res) => {
-          console.log(res.data.data)
+          if(res.data.code == 500 && res.data.msg == "请先注册"){
+            Message.error("请先注册")
+            return
+          }
           if (3 == res.data.data.status) {
             Message.error("登录失败,您被系统认为为非法用户，请联系管理员")
           }
           else {
             localStorage.setItem("email", res.data.data.access);
+            localStorage.setItem('current_id',res.data.data.id )
               this.props.history.push('/user_msg')
           }
 

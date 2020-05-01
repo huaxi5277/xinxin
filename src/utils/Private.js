@@ -20,7 +20,6 @@ const DynamicComponent = (app,model,component,routes,isAuthority,userInfo)=>dyna
     component:()=>
     component().then(res=>{  
         if(isAuthority){
-            console.log(localStorage.email)
             if(!localStorage.key || !localStorage.email) {
                 return () => <Redirect to="/login" />
             }
