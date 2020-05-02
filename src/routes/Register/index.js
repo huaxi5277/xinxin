@@ -35,13 +35,15 @@ class index extends Component {
   render() {
     const onFinish = values => {
       if (this.state.value == 1) {
-        axios.get(user_general_register, { params: { name: values.name, password: values.password } })
+        console.log(values.password)
+        axios.get(user_general_register, { params: { name:  values.name, password: values.password } })
           .then((res) => {
-            if (res.data.code == 200 ) {
-              this.props.history.push('/login')
-            }
+            console.log(res)
             if(res.data.code == 500 ){
               Message.error(res.data.msg)
+            }
+            else {
+              this.props.history.push('/login')
             }
           })
       }

@@ -61,7 +61,6 @@ class index extends Component {
                     }
                     >
                         <Menu.ItemGroup key="g2" >
-                              <Menu.Item key="user_recover"><Link to="/user_msg/user_recover">用户回收</Link></Menu.Item>
                               <Menu.Item key="detail"><Link to="/user_msg/detail">订单信息</Link></Menu.Item>
                         </Menu.ItemGroup>
                     </SubMenu>
@@ -79,6 +78,9 @@ class index extends Component {
                         <Menu.ItemGroup key="g3">
                         <Menu.Item key="find_user_profile"><Link to="/user_msg/find_user_profile">用户身份</Link></Menu.Item>
                         <Menu.Item key="find_user_power"><Link to="/user_msg/find_user_power">用户权限</Link></Menu.Item>
+                        <Menu.Item key="select_artical"><Link to="/user_msg/select_artical">查询所有垃圾</Link></Menu.Item>
+                        <Menu.Item key="select_recycle"><Link to="/user_msg/select_recycle">查询所有回收物</Link></Menu.Item>
+                        <Menu.Item key="select_all_detail"><Link to="/user_msg/select_all_detail">查询所有订单信息</Link></Menu.Item>
                         </Menu.ItemGroup>
                     </SubMenu>
                 </Menu>

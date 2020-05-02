@@ -34,7 +34,7 @@ let routeArr = [
         model : [],
         routes : [
           {
-            path : "/recover/detail/:type/:detail_type",
+            path : "/recover/detail",
             component : ()=>import('./routes/recover/detail'),
             model : [],
           },
@@ -49,6 +49,16 @@ let routeArr = [
           {
             path : "/user_msg/change_password",
             component : ()=>import('./routes/change_passwork'),
+            model : [],
+          },
+          {
+            path : "/user_msg/select_recycle",
+            component : ()=>import('./routes/selectRecycle'),
+            model : [],
+          },
+          {
+            path : "/user_msg/select_artical",
+            component : ()=>import('./routes/selectArtical'),
             model : [],
           },
           {
@@ -79,6 +89,11 @@ let routeArr = [
           {
             path : "/user_msg/find_user_power",
             component : ()=>import('./routes/find_user_power'),
+            model : []
+          },
+          {
+            path : "/user_msg/select_all_detail",
+            component : ()=>import('./routes/select_all_detail'),
             model : []
           }
         ]

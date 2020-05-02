@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { manage_select_all_order } from '../../utils/Regexp'
+import { manage_select_all_order ,manage_check_order ,manage_delete_order } from '../../utils/Regexp'
 import { Table, Tag, Spin } from 'antd'
 import style from '../change_avatar/index.scss'
 const { Column, ColumnGroup } = Table;
@@ -18,31 +18,49 @@ class index extends Component {
         this.setState({
             is_loading: true
         })
-        let current_id = localStorage.getItem("current_id")
         axios.get(manage_select_all_order).then((res) => {
-            console.log(res)
             res.data.data.forEach((item, index) => {
-
-                if (item.apply_person.id == current_id) {
-                    let temp = {
-                        key: item.apply_person.id,
-                        "姓名": item.apply_person.name,
-                        images: [item.image.iaddress],
-                        tags: item.orderStatus.o_name == "审核中" ? ['审核中'] : item.orderStatus.o_name == "已审核" ? ["已审核"] : item.orderStatus.o_name == "进行中" ? ['已审核'] : ['已完成'],
-                        "物品": item.recycle.r_name,
-                        "重量": item.weight.w_kilo
-                    }
-                    arr.push(temp)
+                console.log(item)
+                let temp = {
+                    key: item.apply_person.id,        // 申请人
+                    orderid : item.id,               // 订单id
+                    "姓名": item.apply_person.name,
+                    images: [item.image.iaddress],
+                    tags: item.orderStatus.o_name == "审核中" ? ['审核中'] : item.orderStatus.o_name == "已审核" ? ["已审核"] : item.orderStatus.o_name == "进行中" ? ['已审核'] : ['已完成'],
+                    "物品": item.recycle.r_name,
+                    "重量": item.weight.w_kilo
                 }
-
+                arr.push(temp)
             })
             this.setState({
                 init_arr: arr,
                 is_loading: false,
                 isTables: true
             })
-            console.log(this.state.init_arr)
         })
+    }
+    delete_info(text){
+        
+        axios(manage_delete_order,{
+            params : {
+                orderId : text.orderid
+            }
+        }).then((res)=>{
+           window.location.reload()
+        })
+
+    }
+
+
+    pass_info(text){
+      axios(manage_check_order,{
+          params : {
+            id : text.key,
+            orderId : text.orderid
+          }
+      }).then((res)=>{
+          console.log(res)
+      })
     }
 
 
@@ -53,7 +71,9 @@ class index extends Component {
                     <Spin tip="Loading..." size="large">
                     </Spin>
                 </div>
+
                 <div className="table" style={{ display: this.state.isTables == true ? "block" : "none" }} >
+
                     <Table dataSource={this.state.init_arr} >
                         <Column title="姓名" dataIndex="姓名" key="10" />
                         <Column title="物品" dataIndex="物品" key="11" />
@@ -64,11 +84,26 @@ class index extends Component {
                             key="15"
                             render={tags => (
                                 <span>
-                                    {tags.map(tag => (
-                                        <Tag color="blue" key={tag}>
+                                    {tags.map(tag => {
+                                        let color = ""
+                                        if(tag == "审核中" ){
+                                            color = "red"
+                                        }
+                                        else if (tag == "已完成") {
+                                            color = "grey"
+                                        }
+                                        else if (tag == "进行中") {
+                                            color = "green"
+                                        }
+                                        else {
+                                            color = "blue"  
+                                        }
+                                        return(
+                                            <Tag color={color} key={tag}>
                                             {tag}
                                         </Tag>
-                                    ))}
+                                        )
+                                    })}
                                 </span>
                             )}
                         />
@@ -90,6 +125,7 @@ class index extends Component {
                             render={(text, record) => {
                                 return (
                                     <span>
+                                        <a onClick={() => { this.pass_info(text) }}>Pass</a> &nbsp; &nbsp; &nbsp;
                                         <a onClick={() => { this.delete_info(text) }}>Delete</a>
                                     </span>
                                 )

@@ -50,6 +50,43 @@
                 
             }
         }
+
+
+    .select_artical_wrap{
+        .insert{
+         position: fixed;
+         bottom: 40px;
+         right: 40px;
+        } 
+        .loading{
+            display: flex;
+            justify-content: center;
+        }
+        .insert_wrap{
+            width: 100%;
+            margin-left:20px ;
+            margin-top: 60px;
+            .input_wrap{
+                margin-bottom: 50px;
+            }
+            .ant-select {
+                width: 100%;
+                margin-bottom: 50px;
+            }
+            .my_button{
+                float: right;
+            }
+        } 
+    }
+
+    .detail_box{
+        .loading{
+            display: flex;
+        justify-content: center;
+        }
+    }
+
+
     }
    
 }
