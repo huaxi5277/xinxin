@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import styles from './index.scss'
 import { Link } from 'dva/router'
 import { Card } from 'antd'
-import { Input } from 'antd';
+import { Input } from 'antd'
+import {main_view_seach_by_input} from '../../utils/Regexp'
 import bg1 from '../../assets/img_bg_1.jpg'
 import bg2 from '../../assets/img_bg_2.jpg'
 import bg3 from '../../assets/img_bg_3.jpg'
@@ -168,6 +169,14 @@ export default class index extends Component {
         })
 
     }
+    onSearch(value){
+      console.log(value)
+      axios.get(main_view_seach_by_input,{params:{
+          name : value
+      }}).then((res)=>{
+          console.log(res)
+      })
+    }
     render() {
         return (
             <div className="main-view">
@@ -246,7 +255,7 @@ export default class index extends Component {
                                 placeholder="input search text"
                                 enterButton="Search"
                                 size="large"
-                                onSearch={value => console.log(value)}
+                                onSearch={value =>{this.onSearch(value)}}
                             />
                         </section>
                     </div>

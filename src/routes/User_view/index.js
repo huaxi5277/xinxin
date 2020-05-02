@@ -18,7 +18,6 @@ class index extends Component {
     this.setState({
         id : id  
     })
-    console.log(id)
     this.handleClick(arr[2])
     
     }

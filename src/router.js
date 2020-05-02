@@ -31,7 +31,14 @@ let routeArr = [
       {
         path : "/recover",
         component : ()=>import('./routes/recover'),
-        model : []
+        model : [],
+        routes : [
+          {
+            path : "/recover/detail/:type/:detail_type",
+            component : ()=>import('./routes/recover/detail'),
+            model : [],
+          },
+        ]
       },
       {
         path : "/user_msg",

@@ -52,3 +52,7 @@ export const user_profile_status = domain + "user/selectAllByStatus.do"
 // 管理员 黑名单接口 
 
 export const will_user_black_house = domain + "user/deleteUser.do"
+
+// 首页 分词查询 
+export const main_view_seach_by_input = domain + "search/searchByName.do"
+

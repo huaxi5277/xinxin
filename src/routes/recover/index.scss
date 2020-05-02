@@ -1,0 +1,18 @@
+:global{
+    .recover-container{
+        height: 100%;
+        min-height: 900px;
+        display: flex;
+        padding: 0 40px;
+        margin-top: 10px;
+        .ant-menu-item.active{
+            background-color: #e6f7ff;
+            border-right: 3px solid #1890ff;
+        }
+        .show-wrap{
+            width: calc(100% - 220px);
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+    }
+}

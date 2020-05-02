@@ -37,9 +37,6 @@ class index extends Component {
         })
 
     }
-
-
-
     handleChange(value) {
         let timeId = null;
         this.setState({
