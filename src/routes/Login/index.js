@@ -51,7 +51,8 @@ class index extends Component {
           }
           else {
             localStorage.setItem("email", res.data.data.access);
-            localStorage.setItem('current_id',res.data.data.id )
+            localStorage.setItem('current_id',res.data.data.id );
+            localStorage.setItem('address', "");
               this.props.history.push('/user_msg')
           }
 

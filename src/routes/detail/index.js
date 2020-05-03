@@ -50,11 +50,6 @@ class index extends Component {
     }
 
     delete_info(text) {
-        if (text.tags[0] != "已完成") {
-            Message.error("请等到订单完成")
-            return
-        }
-        else {
             axios.get(manage_delete_order, {
                 params: {
                     orderId: text.key
@@ -69,8 +64,6 @@ class index extends Component {
                     Message.error('失败')
                 }
             })
-        }
-
     }
     render() {
         return (

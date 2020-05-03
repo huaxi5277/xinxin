@@ -66,6 +66,10 @@ export const main_view_seach_by_input = domain + "search/searchByName.do"
  export const work_receive_order = domain + "worker/receiveOrder.do"
 
 
+ // 用户修改密码
+
+ export const revise_password  = domain + "user/updatePassword.do"
+
 
 
 

@@ -1,27 +1,26 @@
 import React, { Component } from 'react'
 import { Input, Button, Form, Message } from 'antd';
 import style from '../../routes/change_avatar/index.scss'
-import { pwd_reg, user_all_people_login } from '../../utils/Regexp.js';
+import { pwd_reg, user_all_people_login , revise_password } from '../../utils/Regexp.js';
 import axios from 'axios'
 class index extends Component {
 
     render() {
+        const id = localStorage.getItem("current_id")
         const onFinish = values => {
-            axios.get(user_all_people_login, {
+            axios.get(revise_password, {
                 params: {
-                    name: values.name,
-                    password: values.password
+                    id: id,
+                    password: values.new_password
                 }
             })
                 .then((res) => {
-                    console.log(res.data.data)
-                    if (3 == res.data.data.status) {
-                        Message.error("登录失败,您被系统认为为非法用户，请联系管理员")
-                    }
-                    else {
-                        localStorage.setItem("email", res.data.data.access);
-                        this.props.history.push('/user_msg')
-                    }
+                  if(res.data.code == 200){
+                      Message.success("修改成功,请重新登录")
+                      window.localStorage.clear();
+                      this.props.history.push('/login')
+                  }
+                  
 
                 })
         };
@@ -38,24 +37,6 @@ class index extends Component {
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                 >
-                    <Form.Item
-                        label="旧密码"
-                        name="old_password"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your password!',
-                            },
-                            {
-                                required: true,
-                                pattern: pwd_reg,
-                                message: "Please enter 6-16 digit password "
-
-                            }
-                        ]}
-                    >
-                        <Input.Password />
-                    </Form.Item>
                     <Form.Item
                         label="新密码"
                         name="new_password"
