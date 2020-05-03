@@ -24,7 +24,9 @@ export default class index extends Component {
                 id : id
             }
         })
-        if(response.data.code == 200 && response.data.data.status){
+        console.log(response.data.data)
+        if(response.data.code == 200){
+            localStorage.setItem("address",response.data.data.address)
             this.setState({
                 isActivate : true,
                 read_name : response.data.data.realName,
@@ -53,9 +55,10 @@ export default class index extends Component {
           })
           .then((res)=>{
               console.log(res.data)
-            //   if(res.data.code == 200){
-            //       window.onload()
-            //   }
+              if(res.data.code == 200){
+                Message.success("实名成功")
+                window.location.reload()
+              }
               if(res.data.code == 500){
                   Message.error(res.data.msg)
               }
@@ -84,7 +87,7 @@ export default class index extends Component {
                             }
                         ]}
                     >
-                        <Input disabled = {this.state.isActivate == true ? true : false}  placeholder={this.state.isActivate ? this.state.realName : ""} />
+                        <Input disabled = {this.state.read_name != "" ? true : false}  placeholder={this.state.read_name != "" ? this.state.read_name : "" } />
                     </Form.Item>
                     <Form.Item
                         label="手机号"
@@ -102,7 +105,7 @@ export default class index extends Component {
                             }
                         ]}
                     >
-                        <Input disabled = {this.state.isActivate == true ? true : false}  placeholder={this.state.isActivate == true ? this.state.phone : ""} value="ni" />
+                        <Input disabled = {this.state.phone != "" ? true : false}  placeholder={this.state.phone != ""  ? this.state.phone : ""}  />
                     </Form.Item>
                     <Form.Item
                         label="地&nbsp;&nbsp;&nbsp;址"
@@ -114,10 +117,10 @@ export default class index extends Component {
                             }
                         ]}
                     >
-                        <Input disabled = {this.state.isActivate == true ? true : false}  placeholder={this.state.isActivate ? this.state.address : ""} />
+                        <Input disabled = {this.state.address != "" ? true : false}  placeholder={this.state.address != "" ? this.state.address : ""} />
                     </Form.Item>
                     <Form.Item name="submit">
-                        <Button type="primary" htmlType="submit" disabled={this.state.isActivate == true ? true : false}>
+                        <Button type="primary" htmlType="submit" disabled={this.state.address != "" && this.state.phone !="" && this.state.real_name !=""  ? true : false}>
                             Submit
                         </Button>
                     </Form.Item>

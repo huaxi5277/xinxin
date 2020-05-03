@@ -33,7 +33,7 @@ class index extends Component {
                 <Menu
                  mode="inline"
                  selectedKeys={this.state.SelectedKeys}
-                 defaultOpenKeys={['sub1','sub2','sub3']}
+                 defaultOpenKeys={['sub1','sub2','sub3','sub4']}
                  className="submenu-wrap"
                 >
                     <SubMenu
@@ -53,7 +53,7 @@ class index extends Component {
                     <SubMenu
                     key="sub2"
                     className="submenu-wrap"
-                    style = {{display : this.state.id == 1 ?  "block" : "none"}}
+                    style = {{display : this.state.id == 1  ?  "block" : "none"}}
                     title={
                         <span>
                             <span>订单管理</span>
@@ -81,6 +81,20 @@ class index extends Component {
                         <Menu.Item key="select_artical"><Link to="/user_msg/select_artical">查询所有垃圾</Link></Menu.Item>
                         <Menu.Item key="select_recycle"><Link to="/user_msg/select_recycle">查询所有回收物</Link></Menu.Item>
                         <Menu.Item key="select_all_detail"><Link to="/user_msg/select_all_detail">查询所有订单信息</Link></Menu.Item>
+                        </Menu.ItemGroup>
+                    </SubMenu>
+                    <SubMenu
+                    key="sub4"
+                    className="submenu-wrap"
+                    style = {{display : this.state.id == 3  ?  "block" : "none"}}
+                    title={
+                        <span>
+                            <span>订单管理</span>
+                        </span>
+                    }
+                    >
+                        <Menu.ItemGroup key="g2" >
+                              <Menu.Item key="work_detail"><Link to="/user_msg/work_detail">订单管理</Link></Menu.Item>
                         </Menu.ItemGroup>
                     </SubMenu>
                 </Menu>

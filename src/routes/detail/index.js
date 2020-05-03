@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { manage_select_all_order } from '../../utils/Regexp'
-import { Table, Tag, Spin } from 'antd'
+import { manage_select_all_order, manage_delete_order } from '../../utils/Regexp'
+import { Table, Tag, Spin, Message } from 'antd'
 import style from '../change_avatar/index.scss'
 const { Column, ColumnGroup } = Table;
 class index extends Component {
@@ -23,14 +23,18 @@ class index extends Component {
             console.log(res)
             res.data.data.forEach((item, index) => {
 
-                if (item.apply_person.id == current_id) {
+                if (item.apply_person.id == current_id && item.apply_person.address != "") {
+                    console.log(item)
                     let temp = {
-                        key: item.apply_person.id,
+
+                        key: item.id,
                         "姓名": item.apply_person.name,
                         images: [item.image.iaddress],
-                        tags: item.orderStatus.o_name == "审核中" ? ['审核中'] : item.orderStatus.o_name == "已审核" ? ["已审核"] : item.orderStatus.o_name == "进行中" ? ['已审核'] : ['已完成'],
+                        tags: item.orderStatus.o_name == "审核中" ? ['审核中'] : item.orderStatus.o_name == "已审核" ? ["已审核"] : item.orderStatus.o_name == "进行中" ? ['进行中'] : ['已完成'],
                         "物品": item.recycle.r_name,
-                        "重量": item.weight.w_kilo
+                        "重量": item.weight.w_kilo,
+                        "地址": item.apply_person.address
+
                     }
                     arr.push(temp)
                 }
@@ -45,7 +49,29 @@ class index extends Component {
         })
     }
 
+    delete_info(text) {
+        if (text.tags[0] != "已完成") {
+            Message.error("请等到订单完成")
+            return
+        }
+        else {
+            axios.get(manage_delete_order, {
+                params: {
+                    orderId: text.key
+                }
+            }).then((res) => {
+                console.log(res.data.code)
+                if (res.data.code == 200) {
+                    Message.success('删除成功')
+                    window.location.reload()
+                }
+                else {
+                    Message.error('失败')
+                }
+            })
+        }
 
+    }
     render() {
         return (
             <div className="detail_box">
@@ -58,17 +84,33 @@ class index extends Component {
                         <Column title="姓名" dataIndex="姓名" key="10" />
                         <Column title="物品" dataIndex="物品" key="11" />
                         <Column title="重量" dataIndex="重量" key="12" />
+                        <Column title="地址" dataIndex="地址" key="13" />
                         <Column
                             title="状态"
                             dataIndex="tags"
                             key="15"
                             render={tags => (
                                 <span>
-                                    {tags.map(tag => (
-                                        <Tag color="blue" key={tag}>
-                                            {tag}
-                                        </Tag>
-                                    ))}
+                                    {tags.map(tag => {
+                                        let color = ""
+                                        if (tag == "审核中") {
+                                            color = "red"
+                                        }
+                                        else if (tag == "已完成") {
+                                            color = "grey"
+                                        }
+                                        else if (tag == "进行中") {
+                                            color = "green"
+                                        }
+                                        else {
+                                            color = "blue"
+                                        }
+                                        return (
+                                            <Tag color={color} key={tag}>
+                                                {tag}
+                                            </Tag>
+                                        )
+                                    })}
                                 </span>
                             )}
                         />

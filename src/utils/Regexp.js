@@ -60,8 +60,10 @@ export const main_view_seach_by_input = domain + "search/searchByName.do"
 
 
 
+// 工作人员 
 
 
+ export const work_receive_order = domain + "worker/receiveOrder.do"
 
 
 
@@ -107,7 +109,7 @@ export const manage_insert_recycle = domain + "manage/insertRecycle.do"
 // 管理员 删除回收物
 export const manage_delete_recycle = domain + "manage/deleteRecycle.do"
 
-// 管理员 用户 查询 订单信息
+// 管理员 用户 查询 订单信息  工作人员
 
 export const manage_select_all_order = domain + "manage/selectAllOrder.do"
 

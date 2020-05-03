@@ -32,7 +32,7 @@
         .main-module-second{
             width: 100%;
             height: 100vh;
-            background-color: palegreen;
+            background-color:#267897;
             transition: all 0.5s linear;
             position: relative;
             .main-module-second-box{
@@ -454,8 +454,8 @@
                             margin-left: 30px ;
                             margin-right: 30px;
                             img{
-                                width: 100px;
-                                height: 100px;
+                                width: 170px;
+                               
                                 display: block;
                                 border-radius: 50%;
                             }
@@ -488,8 +488,8 @@
                             margin-left: 30px ;
                             margin-right: 30px;
                             img{
-                                width: 100px;
-                                height: 100px;
+                                width: 170px;
+                              
                                 display: block;
                                 border-radius: 50%;
                             }
@@ -521,8 +521,8 @@
                             margin-left: 30px ;
                             margin-right: 30px;
                             img{
-                                width: 100px;
-                                height: 100px;
+                                width: 170px;
+                              
                                 display: block;
                                 border-radius: 50%;
                             }
@@ -554,10 +554,9 @@
                             margin-left: 30px ;
                             margin-right: 30px;
                             img{
-                                width: 100px;
-                                height: 100px;
+                                width :72px;           
                                 display: block;
-                                border-radius: 50%;
+                                margin-left: 49px;
                             }
                         }
                         .item-content{
@@ -580,8 +579,7 @@
                         margin-left: 30px ;
                         margin-right: 30px;
                         img{
-                            width: 100px;
-                            height: 100px;
+                            width: 170px;
                             display: block;
                             border-radius: 50%;
                         }
@@ -616,8 +614,7 @@
                                 margin-left: 30px ;
                                 margin-right: 30px;
                                 img{
-                                    width: 100px;
-                                    height: 100px;
+                                    width: 170px;
                                     display: block;
                                     border-radius: 50%;
                                 }
@@ -651,8 +648,7 @@
                                 margin-left: 30px ;
                                 margin-right: 30px;
                                 img{
-                                    width: 100px;
-                                    height: 100px;
+                                    width: 170px;
                                     display: block;
                                     border-radius: 50%;
                                 }
@@ -686,8 +682,7 @@
                                 margin-left: 30px ;
                                 margin-right: 30px;
                                 img{
-                                    width: 100px;
-                                    height: 100px;
+                                    width: 170px;
                                     display: block;
                                     border-radius: 50%;
                                 }
@@ -721,10 +716,9 @@
                                 margin-left: 30px ;
                                 margin-right: 30px;
                                 img{
-                                    width: 100px;
-                                    height: 100px;
+                                    width: 72px;
                                     display: block;
-                                    border-radius: 50%;
+                                    
                                 }
                             }
                             .item-content{
@@ -815,10 +809,30 @@
                     font-size: 30px;
                     }
                     .content-box-bottom{
+                        display: flex;
                     border-top: 1px solid #FEE856;
-                    p{
-                    margin-top: 30px;
+                   .content-box-bottom_love{
+                    margin-top: 50px;
+                    margin-right: 60px;
+                    img{
+                        margin-right: 20px;
                     }
+                    span{
+                        font-size: 18px;
+                        margin-top: 10px;
+                    }
+                   }
+                   .content-box-bottom_hot{
+                    margin-top: 50px;
+                    img{
+                        margin-right: 20px;
+                    }
+                    span{
+                        font-size: 18px;
+                        margin-top: 10px;
+                    }
+                   }
+                
                     }
                     }
                 }
@@ -870,7 +884,7 @@
     }
     @media only screen and (max-width:986px) {
         .main-module-six{
-           
+            margin-top: 76px;
             .main-module-six-container{
                 grid-template-columns: repeat(1, calc(100% - 10px));
                 padding: 30px  100px 100px 100px;

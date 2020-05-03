@@ -24,14 +24,10 @@ let routeArr = [
         model : []
       },
       {
-        path : '/design',
-        component : ()=>import('./routes/Design'),
-        model : []
-      },
-      {
         path : "/recover",
         component : ()=>import('./routes/recover'),
         model : [],
+        isAuthority,
         routes : [
           {
             path : "/recover/detail",
@@ -49,6 +45,11 @@ let routeArr = [
           {
             path : "/user_msg/change_password",
             component : ()=>import('./routes/change_passwork'),
+            model : [],
+          },
+          {
+            path : "/user_msg/work_detail",
+            component : ()=>import('./routes/work_detail'),
             model : [],
           },
           {
